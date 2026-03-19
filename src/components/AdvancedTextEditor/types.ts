@@ -8,6 +8,11 @@ export interface AdvancedTextEditorProps {
   editable?: boolean
 }
 
+export interface AdvancedTextEditorRef {
+  setContent: (html: string) => void
+  getContent: () => string
+}
+
 export interface ToolbarProps {
   editor: Editor | null
   onToggleSource: () => void

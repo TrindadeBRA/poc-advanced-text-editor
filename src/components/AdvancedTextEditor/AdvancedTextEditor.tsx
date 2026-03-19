@@ -1,5 +1,5 @@
 import { useEditor, EditorContent } from '@tiptap/react'
-import { useState } from 'react'
+import { useState, useImperativeHandle, forwardRef } from 'react'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import TextAlign from '@tiptap/extension-text-align'
@@ -14,18 +14,18 @@ import LineSpacing from '../../extensions/LineSpacing'
 import Indent from '../../extensions/Indent'
 import ImageWithOverlay from '../../extensions/ImageWithOverlay'
 import VideoWithOverlay from '../../extensions/VideoWithOverlay'
-import { AdvancedTextEditorProps } from './types'
+import { AdvancedTextEditorProps, AdvancedTextEditorRef } from './types'
 import Toolbar from './Toolbar'
 import SourceView from './SourceView'
 import './AdvancedTextEditor.css'
 
-export default function AdvancedTextEditor({
+const AdvancedTextEditor = forwardRef<AdvancedTextEditorRef, AdvancedTextEditorProps>(function AdvancedTextEditor({
   initialContent = '',
   onChange,
   presignedUrlEndpoint,
   placeholder,
   editable = true,
-}: AdvancedTextEditorProps) {
+}, ref) {
   const [isSourceView, setIsSourceView] = useState(false)
 
   const editor = useEditor({
@@ -64,6 +64,14 @@ export default function AdvancedTextEditor({
     },
   })
 
+  useImperativeHandle(ref, () => ({
+    setContent: (html: string) => {
+      editor?.commands.setContent(html)
+      onChange?.(html)
+    },
+    getContent: () => editor?.getHTML() ?? '',
+  }), [editor, onChange])
+
   return (
     <div className="advanced-text-editor">
       <Toolbar
@@ -87,4 +95,6 @@ export default function AdvancedTextEditor({
       )}
     </div>
   )
-}
+})
+
+export default AdvancedTextEditor
