@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Editor } from '@tiptap/react'
 import LinkDialog from './LinkDialog'
+import ToolbarIcon from './ToolbarIcon'
+import iconLink from '../../header-icons/icon-link.svg'
 
 interface LinkButtonProps {
   editor: Editor
@@ -39,7 +41,7 @@ export default function LinkButton({ editor }: LinkButtonProps) {
         className={`toolbar-button${editor.isActive('link') ? ' is-active' : ''}`}
         onClick={() => setIsOpen(v => !v)}
       >
-        🔗
+        <ToolbarIcon src={iconLink} alt="Link" />
       </button>
       {isOpen && <LinkDialog editor={editor} onClose={() => setIsOpen(false)} />}
     </div>

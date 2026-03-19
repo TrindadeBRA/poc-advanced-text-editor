@@ -6,7 +6,6 @@ import FontFamilyDropdown from './FontFamilyDropdown'
 import FontSizeDropdown from './FontSizeDropdown'
 import ColorPickerButton from './ColorPickerButton'
 import HistoryButtons from './HistoryButtons'
-import EmojiPickerButton from './EmojiPickerButton'
 import LinkButton from './LinkButton'
 import MediaButtons from './MediaButtons'
 import SourceCodeButton from './SourceCodeButton'
@@ -31,9 +30,8 @@ export default function Toolbar({
       <FontSizeDropdown editor={editor} />
       <span className="toolbar-separator" />
       <ColorPickerButton editor={editor} type="text" />
-      <ColorPickerButton editor={editor} type="highlight" />
       <span className="toolbar-separator" />
-      <EmojiPickerButton editor={editor} />
+      <ColorPickerButton editor={editor} type="highlight" />
       <span className="toolbar-separator" />
       <LinkButton editor={editor} />
       <MediaButtons editor={editor} presignedUrlEndpoint={presignedUrlEndpoint} />

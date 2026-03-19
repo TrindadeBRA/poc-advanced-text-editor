@@ -2,6 +2,9 @@ import { useRef } from 'react'
 import { Editor } from '@tiptap/react'
 import useMediaUpload from '../../hooks/useMediaUpload'
 import useMockMediaUpload from '../../hooks/useMockMediaUpload'
+import ToolbarIcon from './ToolbarIcon'
+import iconImage from '../../header-icons/icon-image.svg'
+import iconVideo from '../../header-icons/icon-video.svg'
 
 interface MediaButtonsProps {
   editor: Editor
@@ -85,10 +88,10 @@ export default function MediaButtons({ editor, presignedUrlEndpoint }: MediaButt
         }}
       />
       <button className="toolbar-button" disabled={isUploading} onClick={() => imageInputRef.current?.click()}>
-        🖼
+        <ToolbarIcon src={iconImage} alt="Imagem" />
       </button>
       <button className="toolbar-button" disabled={isUploading} onClick={() => videoInputRef.current?.click()}>
-        🎬
+        <ToolbarIcon src={iconVideo} alt="Vídeo" />
       </button>
     </>
   )
