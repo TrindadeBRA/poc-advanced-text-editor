@@ -50,7 +50,7 @@ Authorization: Bearer <token>   (conforme autenticação da aplicação)
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `uploadUrl` | `string` | URL pré-assinada do S3 para `PUT` direto. Deve ter validade mínima de **5 minutos** |
+| `uploadUrl` | `string` | URL pré-assinada do S3 para `PUT` direto. Deve ter validade de **15 minutos** |
 | `resourceUrl` | `string` | URL pública permanente do recurso via **CloudFront**. O backend já retorna o domínio do CloudFront diretamente — o frontend usa esse valor sem transformações. Será inserida no HTML do editor |
 
 > **Importante:** O backend deve construir o `resourceUrl` substituindo o domínio do S3 pelo domínio do CloudFront antes de retornar a resposta. O frontend não realiza nenhuma transformação de URL.
