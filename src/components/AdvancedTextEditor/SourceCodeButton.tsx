@@ -1,4 +1,5 @@
 import ToolbarIcon from './ToolbarIcon'
+import Tooltip from './Tooltip'
 import iconSource from '../../header-icons/icon-source.svg'
 
 interface SourceCodeButtonProps {
@@ -8,11 +9,13 @@ interface SourceCodeButtonProps {
 
 export default function SourceCodeButton({ isActive, onClick }: SourceCodeButtonProps) {
   return (
-    <button
-      className={`toolbar-button${isActive ? ' is-active' : ''}`}
-      onClick={onClick}
-    >
-      <ToolbarIcon src={iconSource} alt="Código fonte" />
-    </button>
+    <Tooltip title="Código fonte">
+      <button
+        className={`toolbar-button${isActive ? ' is-active' : ''}`}
+        onClick={onClick}
+      >
+        <ToolbarIcon src={iconSource} alt="Código fonte" />
+      </button>
+    </Tooltip>
   )
 }

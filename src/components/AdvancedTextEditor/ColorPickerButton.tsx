@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { Editor } from '@tiptap/react'
 import ToolbarIcon from './ToolbarIcon'
+import Tooltip from './Tooltip'
 import iconColor from '../../header-icons/icon-color.svg'
 
 interface ColorPickerButtonProps {
@@ -22,6 +23,8 @@ export default function ColorPickerButton({ editor, type }: ColorPickerButtonPro
       ? ((editor.getAttributes('textStyle').color as string | undefined) ?? '#000000')
       : ((editor.getAttributes('highlight').color as string | undefined) ?? '#ffff00')
 
+  const tooltipTitle = type === 'text' ? 'Cor do texto' : 'Cor de fundo'
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const color = e.target.value
     if (type === 'text') {
@@ -32,33 +35,35 @@ export default function ColorPickerButton({ editor, type }: ColorPickerButtonPro
   }
 
   return (
-    <div
-      style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 2, cursor: 'pointer' }}
-      onClick={() => inputRef.current?.click()}
-    >
-      {type === 'text' ? (
-        <span
-          style={{
-            display: 'inline-block',
-            width: 20,
-            height: 20,
-            background: currentColor,
-            border: '2px solid rgba(0,0,0,0.15)',
-            borderRadius: 5,
-            flexShrink: 0,
-          }}
+    <Tooltip title={tooltipTitle}>
+      <div
+        style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 2, cursor: 'pointer' }}
+        onClick={() => inputRef.current?.click()}
+      >
+        {type === 'text' ? (
+          <span
+            style={{
+              display: 'inline-block',
+              width: 16,
+              height: 16,
+              background: currentColor,
+              border: '2px solid rgba(0,0,0,0.15)',
+              borderRadius: 4,
+              flexShrink: 0,
+            }}
+          />
+        ) : (
+          <ToolbarIcon src={iconColor} alt="Cor de fundo" />
+        )}
+        <Chevron />
+        <input
+          ref={inputRef}
+          type="color"
+          value={currentColor}
+          onChange={handleChange}
+          style={{ position: 'absolute', opacity: 0, width: 0, height: 0, pointerEvents: 'none' }}
         />
-      ) : (
-        <ToolbarIcon src={iconColor} alt="Cor de fundo" />
-      )}
-      <Chevron />
-      <input
-        ref={inputRef}
-        type="color"
-        value={currentColor}
-        onChange={handleChange}
-        style={{ position: 'absolute', opacity: 0, width: 0, height: 0, pointerEvents: 'none' }}
-      />
-    </div>
+      </div>
+    </Tooltip>
   )
 }

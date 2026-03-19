@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 0px 8px;
-  gap: 4px;
+  gap: 2px;
   height: 44px;
   background: #FAFAFA;
   border-width: 0px 0px 1px 0px;
@@ -19,7 +19,7 @@
   border-radius: 8px 8px 0px 0px;
   box-sizing: border-box;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .advanced-text-editor .editor-content {
@@ -58,15 +58,16 @@
   background: transparent;
   border: none;
   border-radius: 3px;
-  padding: 4px;
+  padding: 2px;
   cursor: pointer;
   font-size: 13px;
   color: #333;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 32px;
-  height: 32px;
+  min-width: 28px;
+  height: 28px;
+  flex-shrink: 0;
 }
 
 .toolbar-button:hover {
@@ -86,20 +87,21 @@
 
 .toolbar-separator {
   width: 1px;
-  height: 20px;
+  height: 16px;
   background: transparent;
-  margin: 0 6px;
+  margin: 0 2px;
   flex-shrink: 0;
 }
 
 .toolbar-select {
   border: 1px solid #e0e0e0;
   border-radius: 3px;
-  padding: 2px 4px;
-  font-size: 13px;
+  padding: 2px 2px;
+  font-size: 12px;
   background: white;
   cursor: pointer;
   height: 24px;
+  flex-shrink: 0;
 }
 
 .upload-spinner {

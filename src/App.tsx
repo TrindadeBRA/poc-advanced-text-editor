@@ -6,9 +6,6 @@ export default function App() {
 
   return (
     <div style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px', fontFamily: 'sans-serif' }}>
-      <p style={{ fontSize: '14px', fontWeight: 500, marginBottom: '6px', color: '#333' }}>
-        Orientação (Web)
-      </p>
       <AdvancedTextEditor
         placeholder="Escreva orientações para ajudar o aluno a organizar seus estudos."
         onChange={setContent}

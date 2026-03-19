@@ -3,6 +3,7 @@ import { Editor } from '@tiptap/react'
 import useMediaUpload from '../../hooks/useMediaUpload'
 import useMockMediaUpload from '../../hooks/useMockMediaUpload'
 import ToolbarIcon from './ToolbarIcon'
+import Tooltip from './Tooltip'
 import iconImage from '../../header-icons/icon-image.svg'
 import iconVideo from '../../header-icons/icon-video.svg'
 
@@ -17,11 +18,7 @@ function useUpload(presignedUrlEndpoint?: string) {
   return presignedUrlEndpoint ? real : mock
 }
 
-function insertWithOverlay(
-  editor: Editor,
-  type: 'image' | 'video',
-  blobUrl: string,
-) {
+function insertWithOverlay(editor: Editor, type: 'image' | 'video', blobUrl: string) {
   if (type === 'image') {
     editor.chain().focus().setImage({ src: blobUrl }).run()
   } else {
@@ -87,12 +84,24 @@ export default function MediaButtons({ editor, presignedUrlEndpoint }: MediaButt
           e.target.value = ''
         }}
       />
-      <button className="toolbar-button" disabled={isUploading} onClick={() => imageInputRef.current?.click()}>
-        <ToolbarIcon src={iconImage} alt="Imagem" />
-      </button>
-      <button className="toolbar-button" disabled={isUploading} onClick={() => videoInputRef.current?.click()}>
-        <ToolbarIcon src={iconVideo} alt="Vídeo" />
-      </button>
+      <Tooltip title="Imagem">
+        <button
+          className="toolbar-button"
+          disabled={isUploading}
+          onClick={() => imageInputRef.current?.click()}
+        >
+          <ToolbarIcon src={iconImage} alt="Imagem" />
+        </button>
+      </Tooltip>
+      <Tooltip title="Vídeo">
+        <button
+          className="toolbar-button"
+          disabled={isUploading}
+          onClick={() => videoInputRef.current?.click()}
+        >
+          <ToolbarIcon src={iconVideo} alt="Vídeo" />
+        </button>
+      </Tooltip>
     </>
   )
 }

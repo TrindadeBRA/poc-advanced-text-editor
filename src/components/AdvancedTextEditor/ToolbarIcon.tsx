@@ -4,5 +4,5 @@ interface ToolbarIconProps {
 }
 
 export default function ToolbarIcon({ src, alt = '' }: ToolbarIconProps) {
-  return <img src={src} alt={alt} width={24} height={24} style={{ display: 'block' }} />
+  return <img src={src} alt={alt} width={16} height={16} style={{ display: 'block' }} />
 }
