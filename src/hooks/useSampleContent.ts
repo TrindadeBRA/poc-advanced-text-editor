@@ -10,6 +10,7 @@ const SAMPLE_HTML = [
   '<li><p>Excepteur sint occaecat <u>cupidatat non proident</u></p></li>',
   '<li><p>Sunt in culpa qui officia <a href="https://example.com">deserunt mollit</a> anim id est laborum</p></li>',
   '</ul>',
+  '<img src="https://picsum.photos/id/24/800/400" />',
   '<p style="text-align: center;"><span style="color: #e03e2d; font-size: 16px;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</span></p>',
   '<p><span style="font-family: Georgia;">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</span></p>',
   '<p style="text-align: left;">Alinhado à esquerda — At vero eos et accusamus et iusto odio dignissimos.</p>',
