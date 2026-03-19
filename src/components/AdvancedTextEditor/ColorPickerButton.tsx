@@ -37,7 +37,7 @@ export default function ColorPickerButton({ editor, type }: ColorPickerButtonPro
   return (
     <Tooltip title={tooltipTitle}>
       <div
-        style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 2, cursor: 'pointer' }}
+        style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 4, cursor: 'pointer' }}
         onClick={() => inputRef.current?.click()}
       >
         {type === 'text' ? (

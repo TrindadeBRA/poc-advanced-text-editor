@@ -80,7 +80,7 @@ export default function AlignmentDropdown({ editor }: AlignmentDropdownProps) {
         ref={buttonRef}
         className="toolbar-button"
         onClick={handleOpen}
-        style={{ display: 'inline-flex', alignItems: 'center', gap: 2, paddingInline: 4 }}
+        style={{ display: 'inline-flex', alignItems: 'center', gap: 4, paddingInline: 4 }}
       >
         <currentAlign.Icon />
         <ChevronIcon />

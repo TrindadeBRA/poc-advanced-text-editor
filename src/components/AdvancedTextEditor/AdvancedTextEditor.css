@@ -106,7 +106,7 @@
   font-weight: 400;
   color: transparent;
   white-space: nowrap;
-  padding: 0 18px 0 2px;
+  padding: 0 14px 0 2px;
   pointer-events: none;
   user-select: none;
 }
@@ -127,7 +127,7 @@
   position: absolute;
   inset: 0;
   width: 100%;
-  padding: 0 18px 0 2px;
+  padding: 0 14px 0 2px;
   border-radius: 3px;
 }
 
