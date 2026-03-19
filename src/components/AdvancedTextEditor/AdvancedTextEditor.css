@@ -1,0 +1,82 @@
+.advanced-text-editor {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: white;
+}
+
+.advanced-text-editor .toolbar {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 6px 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  align-items: center;
+  background: white;
+}
+
+.advanced-text-editor .editor-content {
+  cursor: text;
+}
+
+.advanced-text-editor .ProseMirror {
+  min-height: 120px;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  outline: none;
+}
+
+.advanced-text-editor .ProseMirror p.is-editor-empty:first-child::before {
+  color: #aaa;
+  content: attr(data-placeholder);
+  float: left;
+  pointer-events: none;
+  height: 0;
+}
+
+.toolbar-button {
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  padding: 4px 6px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+}
+
+.toolbar-button:hover {
+  background: #f0f0f0;
+}
+
+.toolbar-button.is-active,
+.toolbar-button:active {
+  background: #e8e8e8;
+  color: #000;
+}
+
+.toolbar-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.toolbar-separator {
+  width: 1px;
+  height: 16px;
+  background: #e0e0e0;
+  margin: 0 4px;
+}
+
+.toolbar-select {
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  padding: 2px 4px;
+  font-size: 13px;
+  background: white;
+  cursor: pointer;
+  height: 24px;
+}

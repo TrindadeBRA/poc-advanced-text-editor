@@ -6,8 +6,8 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
 
 ## Tarefas
 
-- [ ] 1. Setup do projeto e dependências
-  - [ ] 1.1 Configurar projeto React + TypeScript + Vite
+- [x] 1. Setup do projeto e dependências
+  - [x] 1.1 Configurar projeto React + TypeScript + Vite
     - Inicializar o projeto com Vite template react-ts
     - Instalar dependências: `@tiptap/react`, `@tiptap/pm`, `@tiptap/starter-kit`, `@tiptap/extension-underline`, `@tiptap/extension-text-align`, `@tiptap/extension-text-style`, `@tiptap/extension-color`, `@tiptap/extension-highlight`, `@tiptap/extension-font-family`, `@tiptap/extension-link`, `@tiptap/extension-image`, `@tiptap/extension-placeholder`
     - Instalar dependências de dev: `vitest`, `fast-check`, `@testing-library/react`, `@testing-library/jest-dom`, `jsdom`
@@ -16,31 +16,31 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - Criar estrutura de diretórios: `src/components/AdvancedTextEditor/`, `src/extensions/`, `src/hooks/`, `src/services/`
     - _Requisitos: 1.1, 1.2, 1.3_
 
-  - [ ] 1.2 Criar tipos compartilhados e interfaces
+  - [x] 1.2 Criar tipos compartilhados e interfaces
     - Criar `src/components/AdvancedTextEditor/types.ts` com `AdvancedTextEditorProps`, `ToolbarProps`, `SourceViewProps`
     - Criar interfaces de configuração: `FontSizeConfig`, `LineSpacingConfig`, `IndentConfig`, `FontFamilyConfig`
     - Criar interfaces de mídia: `PresignedUrlRequest`, `PresignedUrlResponse`, `UploadState`
     - _Requisitos: 17.1, 17.3_
 
-- [ ] 2. Extensões customizadas do Tiptap
-  - [ ] 2.1 Implementar extensão FontSize
+- [x] 2. Extensões customizadas do Tiptap
+  - [x] 2.1 Implementar extensão FontSize
     - Criar `src/extensions/FontSize.ts` como extensão que estende TextStyle
     - Implementar comando `setFontSize(size: string)` que aplica `font-size` como atributo de estilo inline
     - Implementar `unsetFontSize()` para remoção
     - _Requisitos: 7.2_
 
-  - [ ] 2.2 Implementar extensão LineSpacing
+  - [x] 2.2 Implementar extensão LineSpacing
     - Criar `src/extensions/LineSpacing.ts` como extensão de nó em parágrafos
     - Implementar comando `setLineSpacing(value: string)` que aplica `line-height` no elemento `<p>`
     - _Requisitos: 8.2_
 
-  - [ ] 2.3 Implementar extensão Indent
+  - [x] 2.3 Implementar extensão Indent
     - Criar `src/extensions/Indent.ts` como extensão de nó em parágrafos
     - Implementar comandos `indent()` e `outdent()` com incremento/decremento de 40px em `margin-left`
     - Garantir que `margin-left` nunca fique negativo (mínimo 0px)
     - _Requisitos: 6.1, 6.2_
 
-  - [ ] 2.4 Implementar extensão Video
+  - [x] 2.4 Implementar extensão Video
     - Criar `src/extensions/Video.ts` como extensão de nó
     - Definir atributos: `src`, `controls` (default true), `width` (default "100%")
     - Renderizar como `<video src="..." controls width="100%"></video>`
@@ -58,8 +58,8 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 7: Atributos de estilo de texto são aplicados corretamente**
     - **Valida: Requisitos 7.2, 8.2, 18.2**
 
-- [ ] 3. Componente principal do editor
-  - [ ] 3.1 Implementar AdvancedTextEditor
+- [x] 3. Componente principal do editor
+  - [x] 3.1 Implementar AdvancedTextEditor
     - Criar `src/components/AdvancedTextEditor/AdvancedTextEditor.tsx`
     - Instanciar `useEditor` com todas as extensões (StarterKit, Underline, TextAlign, TextStyle, Color, Highlight, FontFamily, Link, Image, Placeholder, FontSize, LineSpacing, Indent, Video)
     - Configurar StarterKit desabilitando extensões não necessárias
@@ -68,7 +68,7 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - Exportar como `export default`
     - _Requisitos: 2.1, 2.2, 2.3, 17.1, 17.2, 17.3_
 
-  - [ ] 3.2 Criar estilos base do editor
+  - [x] 3.2 Criar estilos base do editor
     - Criar `src/components/AdvancedTextEditor/AdvancedTextEditor.css`
     - Estilizar área de edição com expansão vertical automática
     - Estilizar toolbar fixa acima do conteúdo
@@ -82,18 +82,18 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 18: Editor aceita conteúdo de tamanho arbitrário**
     - **Valida: Requisito 2.3**
 
-- [ ] 4. Checkpoint — Verificar base do editor
+- [x] 4. Checkpoint — Verificar base do editor
   - Garantir que o editor renderiza corretamente com todas as extensões carregadas. Executar testes existentes. Perguntar ao usuário se há dúvidas.
 
-- [ ] 5. Componentes de formatação da Toolbar
-  - [ ] 5.1 Implementar Toolbar
+- [x] 5. Componentes de formatação da Toolbar
+  - [x] 5.1 Implementar Toolbar
     - Criar `src/components/AdvancedTextEditor/Toolbar.tsx`
     - Receber `editor`, `onToggleSource`, `isSourceView`, `presignedUrlEndpoint` como props
     - Renderizar todos os grupos de botões como sub-componentes
     - Manter toolbar fixa acima da área de edição
     - _Requisitos: 15.1, 15.2, 15.3_
 
-  - [ ] 5.2 Implementar FormatButtons
+  - [x] 5.2 Implementar FormatButtons
     - Criar `src/components/AdvancedTextEditor/FormatButtons.tsx`
     - Botões: Bold, Italic, Underline, Strikethrough, Clear formatting
     - Usar `editor.chain().toggleBold().run()` etc. para cada ação
@@ -109,7 +109,7 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 2: Limpar formatação remove todas as marcas**
     - **Valida: Requisitos 3.5, 3.6**
 
-  - [ ] 5.5 Implementar AlignmentDropdown
+  - [x] 5.5 Implementar AlignmentDropdown
     - Criar `src/components/AdvancedTextEditor/AlignmentDropdown.tsx`
     - Opções: left, center, right, justify
     - Atalhos: CTRL+SHIFT+L/E/R/J
@@ -120,7 +120,7 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 3: Alinhamento aplicado é refletido no parágrafo**
     - **Valida: Requisitos 4.1, 4.2, 4.3, 4.4**
 
-  - [ ] 5.7 Implementar ListButtons
+  - [x] 5.7 Implementar ListButtons
     - Criar `src/components/AdvancedTextEditor/ListButtons.tsx`
     - Botões: Bullet list (CTRL+SHIFT+7), Ordered list (CTRL+SHIFT+8)
     - Refletir estado ativo
@@ -130,29 +130,29 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 4: Toggle de lista é involutivo**
     - **Valida: Requisitos 5.1, 5.2**
 
-  - [ ] 5.9 Implementar IndentButtons
+  - [x] 5.9 Implementar IndentButtons
     - Criar `src/components/AdvancedTextEditor/IndentButtons.tsx`
     - Botões: Indent (CTRL+]), Outdent (CTRL+[)
     - _Requisitos: 6.1, 6.2_
 
-  - [ ] 5.10 Implementar FontSizeDropdown
+  - [x] 5.10 Implementar FontSizeDropdown
     - Criar `src/components/AdvancedTextEditor/FontSizeDropdown.tsx`
     - Opções: 8, 9, 10, 11, 12, 14, 18, 24, 36
     - Refletir tamanho atual da seleção
     - _Requisitos: 7.1, 7.2_
 
-  - [ ] 5.11 Implementar FontFamilyDropdown
+  - [x] 5.11 Implementar FontFamilyDropdown
     - Criar `src/components/AdvancedTextEditor/FontFamilyDropdown.tsx`
     - Incluir pelo menos a opção "Graphik"
     - Refletir família atual da seleção
     - _Requisitos: 18.1, 18.2_
 
-  - [ ] 5.12 Implementar LineSpacingDropdown
+  - [x] 5.12 Implementar LineSpacingDropdown
     - Criar `src/components/AdvancedTextEditor/LineSpacingDropdown.tsx`
     - Opções: 1.0, 1.2, 1.4, 1.5, 1.6, 1.8, 2.0, 3.0
     - _Requisitos: 8.1, 8.2_
 
-  - [ ] 5.13 Implementar ColorPickerButton
+  - [x] 5.13 Implementar ColorPickerButton
     - Criar `src/components/AdvancedTextEditor/ColorPickerButton.tsx`
     - Dois modos: cor de texto e cor de fundo
     - Exibir color picker visual ao clicar
@@ -167,7 +167,7 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 15: Estado ativo da toolbar reflete formatação**
     - **Valida: Requisito 15.2**
 
-  - [ ] 5.16 Implementar HistoryButtons
+  - [x] 5.16 Implementar HistoryButtons
     - Criar `src/components/AdvancedTextEditor/HistoryButtons.tsx`
     - Botões: Undo (CTRL+Z), Redo (CTRL+Y)
     - Desabilitar quando não há ações disponíveis
@@ -177,11 +177,11 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 14: Undo/Redo é round-trip**
     - **Valida: Requisitos 14.1, 14.2**
 
-- [ ] 6. Checkpoint — Verificar toolbar completa
+- [x] 6. Checkpoint — Verificar toolbar completa
   - Garantir que todos os botões da toolbar estão funcionais e refletem estado ativo. Executar testes existentes. Perguntar ao usuário se há dúvidas.
 
-- [ ] 7. Link e Emoji
-  - [ ] 7.1 Implementar LinkButton e LinkDialog
+- [x] 7. Link e Emoji
+  - [x] 7.1 Implementar LinkButton e LinkDialog
     - Criar `src/components/AdvancedTextEditor/LinkButton.tsx`
     - Criar `src/components/AdvancedTextEditor/LinkDialog.tsx`
     - Abrir dialog com CTRL+K
@@ -192,7 +192,7 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 9: Link aplicado preserva URL**
     - **Valida: Requisito 10.2**
 
-  - [ ] 7.3 Implementar EmojiPickerButton
+  - [x] 7.3 Implementar EmojiPickerButton
     - Criar `src/components/AdvancedTextEditor/EmojiPickerButton.tsx`
     - Exibir painel de emojis ao clicar
     - Inserir emoji selecionado na posição do cursor
@@ -203,14 +203,14 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 16: Emoji inserido aparece no conteúdo**
     - **Valida: Requisito 16.2**
 
-- [ ] 8. Upload de mídia
-  - [ ] 8.1 Implementar mediaService
+- [x] 8. Upload de mídia
+  - [x] 8.1 Implementar mediaService
     - Criar `src/services/mediaService.ts`
     - Função para solicitar URL pré-assinada: `POST` ao endpoint com `{ fileName, contentType, mediaType }`
     - Função para fazer upload via `PUT` na URL pré-assinada
     - _Requisitos: 11.2, 11.3, 12.2, 12.3_
 
-  - [ ] 8.2 Implementar hook useMediaUpload
+  - [x] 8.2 Implementar hook useMediaUpload
     - Criar `src/hooks/useMediaUpload.ts`
     - Gerenciar estados: `isUploading`, `progress`, `error`
     - Orquestrar fluxo: solicitar URL → upload para S3 → retornar resourceUrl
@@ -225,7 +225,7 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 11: Upload de mídia envia arquivo para S3**
     - **Valida: Requisitos 11.3, 12.3**
 
-  - [ ] 8.5 Implementar MediaButtons e MediaUploadDialog
+  - [x] 8.5 Implementar MediaButtons e MediaUploadDialog
     - Criar `src/components/AdvancedTextEditor/MediaButtons.tsx`
     - Criar `src/components/AdvancedTextEditor/MediaUploadDialog.tsx`
     - Dialog para upload de imagem e vídeo
@@ -238,8 +238,8 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 12: Mídia inserida após upload bem-sucedido**
     - **Valida: Requisitos 11.4, 12.4**
 
-- [ ] 9. Source View
-  - [ ] 9.1 Implementar SourceView e SourceCodeButton
+- [x] 9. Source View
+  - [x] 9.1 Implementar SourceView e SourceCodeButton
     - Criar `src/components/AdvancedTextEditor/SourceView.tsx` com textarea para HTML bruto
     - Criar `src/components/AdvancedTextEditor/SourceCodeButton.tsx` para toggle
     - Ao confirmar, atualizar conteúdo do editor via `editor.commands.setContent()`
@@ -250,15 +250,15 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - **Propriedade 13: Round-trip do Source View**
     - **Valida: Requisitos 13.1, 13.2**
 
-- [ ] 10. Integração e wiring final
-  - [ ] 10.1 Integrar todos os componentes no AdvancedTextEditor
+- [x] 10. Integração e wiring final
+  - [x] 10.1 Integrar todos os componentes no AdvancedTextEditor
     - Garantir que Toolbar renderiza todos os sub-componentes na ordem correta
     - Conectar SourceView com toggle do editor
     - Conectar MediaButtons com presignedUrlEndpoint via props
     - Verificar que todos os atalhos de teclado funcionam
     - _Requisitos: 15.1, 17.1, 17.2_
 
-  - [ ] 10.2 Criar App.tsx de demonstração
+  - [x] 10.2 Criar App.tsx de demonstração
     - Renderizar AdvancedTextEditor com props de exemplo
     - Incluir `onChange` que loga o HTML no console
     - Configurar `presignedUrlEndpoint` com URL placeholder
@@ -270,7 +270,7 @@ Implementação incremental de um editor de texto rico baseado no Tiptap, como c
     - Verificar transição source view ida e volta
     - _Requisitos: 14.3, 14.4, 15.1_
 
-- [ ] 11. Checkpoint final
+- [x] 11. Checkpoint final
   - Executar todos os testes. Garantir que o editor funciona como componente autônomo. Perguntar ao usuário se há dúvidas.
 
 ## Notas
