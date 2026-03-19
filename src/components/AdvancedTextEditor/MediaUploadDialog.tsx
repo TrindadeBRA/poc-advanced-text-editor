@@ -1,16 +1,23 @@
 import { useRef, useState } from 'react'
 import { Editor } from '@tiptap/react'
 import useMediaUpload from '../../hooks/useMediaUpload'
+import useMockMediaUpload from '../../hooks/useMockMediaUpload'
 
 interface MediaUploadDialogProps {
   editor: Editor
   type: 'image' | 'video'
-  presignedUrlEndpoint: string
+  presignedUrlEndpoint?: string
   onClose: () => void
 }
 
+function useUpload(presignedUrlEndpoint?: string) {
+  const real = useMediaUpload(presignedUrlEndpoint ?? '')
+  const mock = useMockMediaUpload()
+  return presignedUrlEndpoint ? real : mock
+}
+
 export default function MediaUploadDialog({ editor, type, presignedUrlEndpoint, onClose }: MediaUploadDialogProps) {
-  const { upload, isUploading, error, progress } = useMediaUpload(presignedUrlEndpoint)
+  const { upload, isUploading, error, progress } = useUpload(presignedUrlEndpoint)
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -55,16 +62,8 @@ export default function MediaUploadDialog({ editor, type, presignedUrlEndpoint, 
           onChange={e => setSelectedFile(e.target.files?.[0] ?? null)}
         />
         {isUploading && (
-          <div style={{ width: '100%', background: '#e0e0e0', borderRadius: 4, height: 8 }}>
-            <div
-              style={{
-                width: `${progress}%`,
-                background: '#1976d2',
-                height: '100%',
-                borderRadius: 4,
-                transition: 'width 0.2s',
-              }}
-            />
+          <div style={{ display: 'flex', justifyContent: 'center', padding: '8px 0' }}>
+            <div className="upload-spinner" />
           </div>
         )}
         {error && <span style={{ color: '#d32f2f', fontSize: 13 }}>{error}</span>}

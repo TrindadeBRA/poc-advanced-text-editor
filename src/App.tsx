@@ -12,7 +12,6 @@ export default function App() {
       <AdvancedTextEditor
         placeholder="Escreva orientações para ajudar o aluno a organizar seus estudos."
         onChange={setContent}
-        presignedUrlEndpoint="https://api.example.com/presigned-url"
       />
       {content && (
         <details style={{ marginTop: '24px' }}>

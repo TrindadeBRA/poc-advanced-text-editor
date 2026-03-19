@@ -34,6 +34,18 @@
   height: 0;
 }
 
+.advanced-text-editor .ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.advanced-text-editor .ProseMirror video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .toolbar-button {
   background: transparent;
   border: none;
@@ -79,4 +91,33 @@
   background: white;
   cursor: pointer;
   height: 24px;
+}
+
+.upload-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.upload-spinner--large {
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+}
+
+.media-upload-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

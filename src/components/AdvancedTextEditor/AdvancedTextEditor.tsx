@@ -8,12 +8,12 @@ import Color from '@tiptap/extension-color'
 import Highlight from '@tiptap/extension-highlight'
 import FontFamily from '@tiptap/extension-font-family'
 import Link from '@tiptap/extension-link'
-import Image from '@tiptap/extension-image'
 import Placeholder from '@tiptap/extension-placeholder'
 import FontSize from '../../extensions/FontSize'
 import LineSpacing from '../../extensions/LineSpacing'
 import Indent from '../../extensions/Indent'
-import Video from '../../extensions/Video'
+import ImageWithOverlay from '../../extensions/ImageWithOverlay'
+import VideoWithOverlay from '../../extensions/VideoWithOverlay'
 import { AdvancedTextEditorProps } from './types'
 import Toolbar from './Toolbar'
 import SourceView from './SourceView'
@@ -50,12 +50,12 @@ export default function AdvancedTextEditor({
       Highlight.configure({ multicolor: true }),
       FontFamily,
       Link.configure({ openOnClick: false, HTMLAttributes: { rel: 'noopener noreferrer' } }),
-      Image,
+      ImageWithOverlay,
       Placeholder.configure({ placeholder: placeholder ?? 'Digite aqui...' }),
       FontSize,
       LineSpacing,
       Indent,
-      Video,
+      VideoWithOverlay,
     ],
     content: initialContent,
     editable,
