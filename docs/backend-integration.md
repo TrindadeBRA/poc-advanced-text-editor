@@ -51,7 +51,9 @@ Authorization: Bearer <token>   (conforme autenticação da aplicação)
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
 | `uploadUrl` | `string` | URL pré-assinada do S3 para `PUT` direto. Deve ter validade mínima de **5 minutos** |
-| `resourceUrl` | `string` | URL pública permanente do recurso após o upload. Será inserida no HTML do editor |
+| `resourceUrl` | `string` | URL pública permanente do recurso via **CloudFront**. O backend já retorna o domínio do CloudFront diretamente — o frontend usa esse valor sem transformações. Será inserida no HTML do editor |
+
+> **Importante:** O backend deve construir o `resourceUrl` substituindo o domínio do S3 pelo domínio do CloudFront antes de retornar a resposta. O frontend não realiza nenhuma transformação de URL.
 
 ### Responses de Erro
 
@@ -119,6 +121,17 @@ Para desenvolvimento local, adicionar `"http://localhost:5173"` em `AllowedOrigi
   Exemplo: uploads/image/a1b2c3d4/imagem-exemplo.jpg
 - Permissão necessária na IAM policy: s3:PutObject no bucket de destino
 ```
+
+### CloudFront como CDN
+
+O `resourceUrl` retornado deve usar o domínio do CloudFront, não o domínio direto do S3:
+
+```
+uploadUrl:   https://bucket.s3.amazonaws.com/uploads/images/uuid/foto.jpg?X-Amz-Signature=...
+resourceUrl: https://cdn.example.com/uploads/images/uuid/foto.jpg   ← domínio CloudFront
+```
+
+O backend constrói o `resourceUrl` trocando o host do S3 pelo host do CloudFront para a mesma key. O frontend insere esse valor diretamente no HTML sem nenhuma transformação.
 
 ### Separação por tipo de mídia
 
