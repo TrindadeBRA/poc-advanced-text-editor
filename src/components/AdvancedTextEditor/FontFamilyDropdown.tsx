@@ -11,16 +11,19 @@ export default function FontFamilyDropdown({ editor }: FontFamilyDropdownProps) 
     (editor.getAttributes('textStyle').fontFamily as string | undefined) ?? 'Graphik'
 
   return (
-    <select
-      className="toolbar-select"
-      value={currentFamily}
-      onChange={e => editor.chain().focus().setFontFamily(e.target.value).run()}
-    >
-      {FONT_FAMILIES.map(family => (
-        <option key={family} value={family}>
-          {family}
-        </option>
-      ))}
-    </select>
+    <div className="toolbar-select-sizer">
+      <span className="toolbar-select-sizer__label">{currentFamily}</span>
+      <select
+        className="toolbar-select-ghost"
+        value={currentFamily}
+        onChange={e => editor.chain().focus().setFontFamily(e.target.value).run()}
+      >
+        {FONT_FAMILIES.map(family => (
+          <option key={family} value={family}>
+            {family}
+          </option>
+        ))}
+      </select>
+    </div>
   )
 }
