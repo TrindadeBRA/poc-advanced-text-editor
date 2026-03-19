@@ -17,7 +17,7 @@ function useUpload(presignedUrlEndpoint?: string) {
 }
 
 export default function MediaUploadDialog({ editor, type, presignedUrlEndpoint, onClose }: MediaUploadDialogProps) {
-  const { upload, isUploading, error, progress } = useUpload(presignedUrlEndpoint)
+  const { upload, isUploading, error } = useUpload(presignedUrlEndpoint)
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -25,9 +25,9 @@ export default function MediaUploadDialog({ editor, type, presignedUrlEndpoint, 
     if (!selectedFile) return
     const resourceUrl = await upload(selectedFile)
     if (type === 'image') {
-      editor.chain().focus().setImage({ src: resourceUrl }).run()
+      (editor.chain().focus() as any).setImage({ src: resourceUrl }).run()
     } else {
-      editor.chain().focus().setVideo({ src: resourceUrl }).run()
+      (editor.chain().focus() as any).setVideo({ src: resourceUrl }).run()
     }
     onClose()
   }

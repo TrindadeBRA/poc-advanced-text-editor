@@ -40,7 +40,7 @@ const ImageWithOverlay = Node.create({
   },
   addCommands() {
     return {
-      setImage: (options: { src: string; alt?: string; title?: string }) => ({ commands }) => {
+      setImage: (options: { src: string; alt?: string; title?: string }) => ({ commands }: { commands: any }) => {
         return commands.insertContent({ type: this.name, attrs: options })
       },
     } as any

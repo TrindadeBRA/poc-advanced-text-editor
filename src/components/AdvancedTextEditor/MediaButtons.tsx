@@ -25,9 +25,9 @@ function useUpload(presignedUrlEndpoint?: string) {
 
 function insertWithOverlay(editor: Editor, type: 'image' | 'video', blobUrl: string) {
   if (type === 'image') {
-    editor.chain().focus().setImage({ src: blobUrl }).run()
+    ;(editor.chain().focus() as any).setImage({ src: blobUrl }).run()
   } else {
-    editor.chain().focus().setVideo({ src: blobUrl }).run()
+    ;(editor.chain().focus() as any).setVideo({ src: blobUrl }).run()
   }
 }
 
