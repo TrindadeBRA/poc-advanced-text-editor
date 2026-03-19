@@ -12,6 +12,11 @@ interface MediaButtonsProps {
   presignedUrlEndpoint?: string
 }
 
+const FILE_SIZE_LIMITS = {
+  image: 2 * 1024 * 1024,
+  video: 5 * 1024 * 1024,
+}
+
 function useUpload(presignedUrlEndpoint?: string) {
   const real = useMediaUpload(presignedUrlEndpoint ?? '')
   const mock = useMockMediaUpload()
@@ -49,6 +54,12 @@ export default function MediaButtons({ editor, presignedUrlEndpoint }: MediaButt
   const videoInputRef = useRef<HTMLInputElement>(null)
 
   async function handleFileSelected(file: File, type: 'image' | 'video') {
+    const limitMB = type === 'image' ? '2MB' : '5MB'
+    if (file.size > FILE_SIZE_LIMITS[type]) {
+      alert(`O arquivo excede o limite de ${limitMB} permitido para ${type === 'image' ? 'imagens' : 'vídeos'}.`)
+      return
+    }
+
     const blobUrl = URL.createObjectURL(file)
     insertWithOverlay(editor, type, blobUrl)
 

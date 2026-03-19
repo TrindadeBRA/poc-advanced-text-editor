@@ -26,8 +26,10 @@ export default function Toolbar({
       <span className="toolbar-separator" />
       <ListButtons editor={editor} />
       <span className="toolbar-separator" />
-      <FontFamilyDropdown editor={editor} />
-      <FontSizeDropdown editor={editor} />
+      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+        <FontFamilyDropdown editor={editor} />
+        <FontSizeDropdown editor={editor} />
+      </div>
       <span className="toolbar-separator" />
       <ColorPickerButton editor={editor} type="text" />
       <span className="toolbar-separator" />

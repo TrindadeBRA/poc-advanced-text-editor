@@ -74,7 +74,7 @@ export default function AdvancedTextEditor({
       />
       {isSourceView ? (
         <SourceView
-          html={editor?.getHTML() ?? ''}
+          html={editor?.getHTML() === '<p></p>' ? '' : (editor?.getHTML() ?? '')}
           onSave={(html) => {
             editor?.commands.setContent(html)
             setIsSourceView(false)
