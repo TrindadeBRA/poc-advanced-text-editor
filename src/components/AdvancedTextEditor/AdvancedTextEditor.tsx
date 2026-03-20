@@ -1,5 +1,5 @@
 import { useEditor, EditorContent } from '@tiptap/react'
-import { useState, useImperativeHandle, forwardRef } from 'react'
+import { useState, useImperativeHandle, forwardRef, useMemo } from 'react'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import TextAlign from '@tiptap/extension-text-align'
@@ -14,9 +14,11 @@ import LineSpacing from '../../extensions/LineSpacing'
 import Indent from '../../extensions/Indent'
 import ImageWithOverlay from '../../extensions/ImageWithOverlay'
 import VideoWithOverlay from '../../extensions/VideoWithOverlay'
+import VariableBadge from '../../extensions/VariableBadge'
 import { AdvancedTextEditorProps, AdvancedTextEditorRef } from './types'
 import Toolbar from './Toolbar'
 import SourceView from './SourceView'
+import VariableBar from './VariableBar'
 import './AdvancedTextEditor.css'
 
 const AdvancedTextEditor = forwardRef<AdvancedTextEditorRef, AdvancedTextEditorProps>(function AdvancedTextEditor({
@@ -25,11 +27,13 @@ const AdvancedTextEditor = forwardRef<AdvancedTextEditorRef, AdvancedTextEditorP
   presignedUrlEndpoint,
   placeholder,
   editable = true,
+  variables,
 }, ref) {
   const [isSourceView, setIsSourceView] = useState(false)
+  const hasVariables = Array.isArray(variables) && variables.length > 0
 
-  const editor = useEditor({
-    extensions: [
+  const extensions = useMemo(() => {
+    const base = [
       StarterKit.configure({
         bold: {},
         italic: {},
@@ -56,7 +60,15 @@ const AdvancedTextEditor = forwardRef<AdvancedTextEditorRef, AdvancedTextEditorP
       LineSpacing,
       Indent,
       VideoWithOverlay,
-    ],
+    ]
+    if (hasVariables) {
+      base.push(VariableBadge)
+    }
+    return base
+  }, [hasVariables, placeholder])
+
+  const editor = useEditor({
+    extensions,
     content: initialContent,
     editable,
     onUpdate: ({ editor: e }) => {
@@ -73,8 +85,12 @@ const AdvancedTextEditor = forwardRef<AdvancedTextEditorRef, AdvancedTextEditorP
   }), [editor, onChange])
 
   return (
-    <div className="advanced-text-editor">
-      <Toolbar
+    <>
+      {hasVariables && (
+        <VariableBar editor={editor} variables={variables} />
+      )}
+      <div className="advanced-text-editor">
+        <Toolbar
         editor={editor}
         onToggleSource={() => setIsSourceView(v => !v)}
         isSourceView={isSourceView}
@@ -93,7 +109,8 @@ const AdvancedTextEditor = forwardRef<AdvancedTextEditorRef, AdvancedTextEditorP
       ) : (
         <EditorContent editor={editor} className="editor-content" />
       )}
-    </div>
+      </div>
+    </>
   )
 })
 

@@ -1,4 +1,5 @@
 import { Editor } from '@tiptap/react'
+import { VariableDefinition } from './VariableBar'
 
 export interface AdvancedTextEditorProps {
   initialContent?: string
@@ -6,6 +7,7 @@ export interface AdvancedTextEditorProps {
   presignedUrlEndpoint?: string
   placeholder?: string
   editable?: boolean
+  variables?: VariableDefinition[]
 }
 
 export interface AdvancedTextEditorRef {

@@ -15,6 +15,10 @@ export default function App() {
         ref={editorRef}
         placeholder="Escreva orientações para ajudar o aluno a organizar seus estudos."
         onChange={handleChange}
+        variables={[
+          { name: 'NOME_CURSO' },
+          { name: 'DATA_ENCERRAMENTO' },
+        ]}
       />
       {htmlContent && (
         <>
